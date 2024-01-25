@@ -1,10 +1,13 @@
-import KommunerDropdown from "./components/KommunerDropdown"; // Correct path to your component
+import MainContainer from "./components/MainContainer";
+import KommunerDropdown from "./components/KommunerDropdown";
+import YearDropdown from "./components/YearDropdown";
 
 const App = () => {
   return (
-    <div>
+    <MainContainer>
       <KommunerDropdown />
-    </div>
+      <YearDropdown />
+    </MainContainer>
   );
 };
 
