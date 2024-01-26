@@ -10,13 +10,15 @@ const KommunerDropdown = () => {
             .then(response => response.json())
             .then(data => {
                 setKommuner(data.classificationItems);
+                console.log(data.classificationItems);
             });
     }, []);
 
     return (
-        <Select>
+        <Select placeholder="Velg en kommune">
             {kommuner.map(({ code, name }) => (
                 <Option key={code} value={code}>{name}</Option>
+                
             ))}
         </Select>
     );
