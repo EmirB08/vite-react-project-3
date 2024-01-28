@@ -12,7 +12,11 @@ const DataTable = () => {
     const { data, error } = useSWR(url, fetcher);
 
     if (error) return <div>Error loading data.</div>;
-    if (!data) return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}><CircularProgress /></div>;
+    if (!data) return (
+        <div className="loading-animation">
+            <CircularProgress />
+        </div>
+    );
 
     const entries = data._embedded.enheter;
 

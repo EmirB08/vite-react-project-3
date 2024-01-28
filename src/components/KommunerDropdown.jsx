@@ -11,7 +11,8 @@ const KommunerDropdown = () => {
         fetch("https://data.ssb.no/api/klass/v1/versions/1847.json")
             .then(response => response.json())
             .then(data => {
-                setKommuner(data.classificationItems);
+                const sortedKommuner = data.classificationItems.sort((a, b) => a.name.localeCompare(b.name));
+                setKommuner(sortedKommuner);
             });
     }, []);
 
