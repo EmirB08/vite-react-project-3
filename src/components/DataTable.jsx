@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { DataContext } from './DataContext';
 import useSWR from 'swr';
 import Table from '@mui/joy/Table';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const fetcher = url => fetch(url).then(res => res.json());
 
@@ -11,15 +12,15 @@ const DataTable = () => {
     const { data, error } = useSWR(url, fetcher);
 
     if (error) return <div>Error loading data.</div>;
-    if (!data) return <div>Loading...</div>;
+    if (!data) return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}><CircularProgress /></div>;
 
     const entries = data._embedded.enheter;
 
     return (
-        <Table>
+        <Table stripe="odd">
             <thead>
                 <tr>
-                    <th>Navn</th>
+                    <th>Enhet</th>
                     <th>Organisasjonsnummer</th>
                     <th>Stiftelsesdato</th>
                 </tr>
