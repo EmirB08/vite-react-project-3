@@ -6,7 +6,7 @@ const MainContainer = ({ children }) => {
     return (
         <React.Fragment>
             <Container maxWidth="md">
-                <Box sx={{ bgcolor: "#f8f8f8d8;", height: "100vh" }}>
+                <Box sx={{ bgcolor: "#f8f8f8d8;" }}>
                     {children}
                 </Box>
             </Container>
