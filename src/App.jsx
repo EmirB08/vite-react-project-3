@@ -1,8 +1,8 @@
-import { DataProvider } from './components/DataContext'; // Adjust the import path as per your project structure
+import { DataProvider } from './components/DataContext';
 import MainContainer from './components/MainContainer';
 import KommunerDropdown from './components/KommunerDropdown';
 import YearDropdown from './components/YearDropdown';
-import SearchButton from './components/SearchButton'; // Import the new SearchButton component
+import SearchButton from './components/SearchButton';
 
 const App = () => {
     return (

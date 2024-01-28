@@ -1,28 +1,22 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { DataContext } from './DataContext';
+import DataTable from './DataTable';
+import Button from '@mui/joy/Button';
 
 const SearchButton = () => {
     const { kommuneCode, year } = useContext(DataContext);
+    const [showDataTable, setShowDataTable] = useState(false);
 
-    const handleSearch = () => {
+    const handleButtonClick = () => {
         console.log(kommuneCode, year);
-        if (!kommuneCode || !year) {
-            alert('Please select both a kommune and a year.');
-            return;
-        }
-
-        const url = `https://data.brreg.no/enhetsregisteret/api/enheter?kommunenummer=${kommuneCode}&fraRegistreringsdatoEnhetsregisteret=${year}-01-01&tilRegistreringsdatoEnhetsregisteret=${year}-12-31&size=9999`;
-
-        fetch(url)
-            .then(response => response.json())
-            .then(data => {
-            console.log(data);
-            })
-            
+        setShowDataTable(true);
     };
 
     return (
-        <button onClick={handleSearch}>Search</button>
+        <div>
+            <Button onClick={handleButtonClick}>Søk enhetsregisteret</Button>
+            {showDataTable && <DataTable />}
+        </div>
     );
 };
 
