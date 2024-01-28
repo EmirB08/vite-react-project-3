@@ -1,8 +1,8 @@
-import { DataProvider } from './components/DataContext';
-import MainContainer from './components/MainContainer';
-import KommunerDropdown from './components/KommunerDropdown';
-import YearDropdown from './components/YearDropdown';
-import SearchButton from './components/SearchButton';
+import { DataProvider } from "./components/DataContext";
+import MainContainer from "./components/MainContainer";
+import KommunerDropdown from "./components/KommunerDropdown";
+import YearDropdown from "./components/YearDropdown";
+import SearchButton from "./components/SearchButton";
 
 const App = () => {
     return (

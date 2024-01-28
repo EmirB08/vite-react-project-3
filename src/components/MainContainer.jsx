@@ -1,6 +1,6 @@
-import React from 'react';
-import { Box, Container } from '@mui/system';
-import PropTypes from 'prop-types';
+import React from "react";
+import { Box, Container } from "@mui/system";
+import PropTypes from "prop-types";
 
 const MainContainer = ({ children }) => {
     return (

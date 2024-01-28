@@ -1,8 +1,8 @@
-import { useContext } from 'react';
-import { DataContext } from './DataContext';
-import useSWR from 'swr';
-import Table from '@mui/joy/Table';
-import CircularProgress from '@mui/material/CircularProgress';
+import { useContext } from "react";
+import { DataContext } from "./DataContext";
+import useSWR from "swr";
+import Table from "@mui/joy/Table";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const fetcher = url => fetch(url).then(res => res.json());
 

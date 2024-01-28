@@ -1,7 +1,7 @@
-import { useContext, useState, useEffect } from 'react';
-import { DataContext } from './DataContext';
-import Select from '@mui/joy/Select';
-import Option from '@mui/joy/Option';
+import { useContext, useState, useEffect } from "react";
+import { DataContext } from "./DataContext";
+import Select from "@mui/joy/Select";
+import Option from "@mui/joy/Option";
 
 const KommunerDropdown = () => {
     const { setKommuneCode } = useContext(DataContext);

@@ -1,7 +1,7 @@
-import { useContext, useState } from 'react';
-import { DataContext } from './DataContext';
-import DataTable from './DataTable';
-import Button from '@mui/joy/Button';
+import { useContext, useState } from "react";
+import { DataContext } from "./DataContext";
+import DataTable from "./DataTable";
+import Button from "@mui/joy/Button";
 
 const SearchButton = () => {
     const { kommuneCode, year } = useContext(DataContext);
