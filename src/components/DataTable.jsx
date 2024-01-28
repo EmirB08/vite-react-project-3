@@ -18,6 +18,10 @@ const DataTable = () => {
         </div>
     );
 
+    if (!data._embedded || !data._embedded.enheter) {
+        return <div>No data available for the selected kommune and year.</div>;
+    }
+
     const entries = data._embedded.enheter;
 
     return (

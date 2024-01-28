@@ -8,7 +8,7 @@ const KommunerDropdown = () => {
     const [kommuner, setKommuner] = useState([]);
 
     useEffect(() => {
-        fetch("https://data.ssb.no/api/klass/v1/versions/1847.json")
+        fetch("https://data.ssb.no/api/klass/v1/versions/1710.json")
             .then(response => response.json())
             .then(data => {
                 const sortedKommuner = data.classificationItems.sort((a, b) => a.name.localeCompare(b.name));
