@@ -15,7 +15,8 @@
     "@mui/joy": "^5.0.0-beta.24",
     "@mui/system": "^5.15.6",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",

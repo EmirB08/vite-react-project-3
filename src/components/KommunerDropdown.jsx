@@ -1,8 +1,10 @@
-import { useState, useEffect } from "react";
-import Select from "@mui/joy/Select";
-import Option from "@mui/joy/Option";
+import { useContext, useState, useEffect } from 'react';
+import { DataContext } from './DataContext';
+import Select from '@mui/joy/Select';
+import Option from '@mui/joy/Option';
 
 const KommunerDropdown = () => {
+    const { setKommuneCode } = useContext(DataContext);
     const [kommuner, setKommuner] = useState([]);
 
     useEffect(() => {
@@ -10,18 +12,25 @@ const KommunerDropdown = () => {
             .then(response => response.json())
             .then(data => {
                 setKommuner(data.classificationItems);
-                console.log(data.classificationItems);
             });
     }, []);
+
+    const handleSelectKommune = (code) => {
+        console.log(code);
+        setKommuneCode(code);
+    };
 
     return (
         <Select placeholder="Velg en kommune">
             {kommuner.map(({ code, name }) => (
-                <Option key={code} value={code}>{name}</Option>
-                
+                <Option key={code} value={code} onClick={() => handleSelectKommune(code)}>
+                    {name}
+                </Option>
             ))}
         </Select>
     );
 };
 
 export default KommunerDropdown;
+
+
