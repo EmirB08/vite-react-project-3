@@ -34,7 +34,7 @@ const DataTable = () => {
         <Table stripe="odd">
             <thead>
                 <tr>
-                    <th>Enhet</th>
+                    <th>Navn</th>
                     <th>Organisasjonsnummer</th>
                     <th>Stiftelsesdato</th>
                 </tr>
