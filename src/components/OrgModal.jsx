@@ -4,6 +4,7 @@ import ModalDialog from "@mui/joy/ModalDialog";
 import Typography from "@mui/joy/Typography";
 import Box from "@mui/joy/Box";
 import PropTypes from "prop-types";
+import Table from "@mui/joy/Table";
 
 const OrgModal = ({ open, onClose, organization }) => {
     if (!organization) return null;
@@ -17,7 +18,7 @@ const OrgModal = ({ open, onClose, organization }) => {
         { label: "Ansatte", value: organization.antallAnsatte },
         { label: "Foretaksregisteret", value: organization.registrertIForetaksregisteret ? "Ja" : "Nei" },
         { label: "Frivillighetsregisteret", value: organization.registrertIFrivillighetsregisteret ? "Ja" : "Nei" },
-        { label: "Konkurs", value: organization.konkurs ? "Ja" : "Nei", special: organization.konkurs },
+        { label: "Konkurs", value: organization.konkurs ? "Ja" : "Nei", true: organization.konkurs },
     ];
 
     return (
@@ -28,16 +29,23 @@ const OrgModal = ({ open, onClose, organization }) => {
                 </Typography>
                 
                 <Box sx={{ mt: 1, }}>
-                    <table>
+                    <Table stripe="odd" hoverRow>
                         <tbody>
                             {orgDetails.map((item, index) => (
                                 <tr key={index}>
-                                    <td><Typography sx={{ fontWeight: 'bold' }}>{item.label}:</Typography></td>
-                                    <td><Typography sx={{ color: item.special ? '#ff0000' : 'inherit' }}>{item.value}</Typography></td>
+                                    <td>
+                                        <Typography sx={{ fontWeight: 'bold' }}>{item.label}
+                                        </Typography>
+                                    </td>
+                                    <td>
+                                        <Typography sx={{ color: item.true ? '#ff0000' : "inherit"}}>
+                                        {item.value}
+                                        </Typography>
+                                    </td>
                                 </tr>
                             ))}
                         </tbody>
-                    </table>
+                    </Table>
                 </Box>
             </ModalDialog>
         </Modal>

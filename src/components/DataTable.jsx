@@ -35,7 +35,7 @@ const DataTable = () => {
             <thead>
                 <tr>
                     <th>Navn</th>
-                    <th>Organisasjonsnummer</th>
+                    <th>Org.nr</th>
                     <th>Stiftelsesdato</th>
                 </tr>
             </thead>
@@ -45,7 +45,7 @@ const DataTable = () => {
                     style={{
                         backgroundColor: entry.konkurs === true ? "#ff726f" : "",
                         cursor: 'pointer'
-                      }}>
+                    }}>
                         <td>{entry.navn}</td>
                         <td>{entry.organisasjonsnummer}</td>
                         <td>{entry.stiftelsesdato}</td>
