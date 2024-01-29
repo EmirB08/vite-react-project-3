@@ -1,8 +1,7 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Prosjekt Oppgave: Oversikt over bedrifter
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Oppgaven går ut på å lage et brukergrensesnitt som lister opp alle bedrifter som er opprettet i en valgt kommune innenfor et gitt år.
+Brukeren skal kunne velge kommune og år fra en liste, og få opp en liste over bedrifter som er opprettet i den valgte kommunen i det valgte året.
+Brønnøysundregistrene har en åpen API som kan brukes til å hente ut informasjon om bedrifter. API-et er dokumentert her: https://data.brreg.no/enhetsregisteret/api/docs/index.html.
