@@ -21,10 +21,10 @@ const OrgModal = ({ open, onClose, organization }) => {
     ];
 
     return (
-        <Modal open={open} onClose={onClose} size="lg">
-            <ModalDialog sx={{ mb: 1, width: 'auto', maxWidth: '100%', overflow: 'wrap' }}>
+        <Modal open={open} onClose={onClose}>
+            <ModalDialog sx={{ mb: 1 }}>
                 <ModalClose />
-                <Typography level="h4" component="h2">{organization.navn}
+                <Typography level="h4" component="h2" sx={ { mt: 1.5 }}>{organization.navn}
                 </Typography>
                 
                 <Box sx={{ mt: 1 }}>
