@@ -22,12 +22,12 @@ const OrgModal = ({ open, onClose, organization }) => {
 
     return (
         <Modal open={open} onClose={onClose}>
-            <ModalDialog sx={{ mb: 1 }}>
+            <ModalDialog>
                 <ModalClose />
                 <Typography level="h4" component="h2" sx={ { mt: 1.5 }}>{organization.navn}
                 </Typography>
                 
-                <Box sx={{ mt: 1 }}>
+                <Box sx={{ mt: 1, }}>
                     <table>
                         <tbody>
                             {orgDetails.map((item, index) => (
