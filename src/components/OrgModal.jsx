@@ -7,29 +7,41 @@ import PropTypes from "prop-types";
 
 const OrgModal = ({ open, onClose, organization }) => {
     if (!organization) return null;
+
+    const orgDetails = [
+        { label: "Organisasjonsnummer", value: organization.organisasjonsnummer },
+        { label: "Stiftelsesdato", value: organization.stiftelsesdato },
+        { label: "Adresse", value: organization.forretningsadresse?.adresse?.join(', ') },
+        { label: "Organisasjonsform", value: organization.organisasjonsform?.beskrivelse },
+        { label: "Næringskode", value: organization.naeringskode1?.beskrivelse },
+        { label: "Ansatte", value: organization.antallAnsatte },
+        { label: "Foretaksregisteret", value: organization.registrertIForetaksregisteret ? "Ja" : "Nei" },
+        { label: "Frivillighetsregisteret", value: organization.registrertIFrivillighetsregisteret ? "Ja" : "Nei" },
+        { label: "Konkurs", value: organization.konkurs ? "Ja" : "Nei", special: organization.konkurs },
+    ];
+
     return (
-    <Modal open={open} onClose={onClose}>
-    <ModalDialog sx={{ 
-                    mt: 1,
-                    backgroundColor: organization.konkurs ? "#ff726f" : "",
-                    }}>
-        <ModalClose />
-        <Typography level="h4" component="h2">{organization.navn}</Typography>
-        
-        <Box sx={{ mt: 1 }}>
-        <Typography>Organisasjonsnummer: {organization.organisasjonsnummer}</Typography>
-        <Typography>Organisasjonsform: {organization.organisasjonsform?.beskrivelse}</Typography>
-        <Typography>Næringskode: {organization.naeringskode1?.beskrivelse}</Typography>
-        <Typography>Stiftet: {organization.stiftelsesdato}</Typography>
-        <Typography>Adresse: {organization.forretningsadresse?.adresse?.join(", ")}</Typography>
-        <Typography>Ansatte: {organization.antallAnsatte}</Typography>
-        <Typography>Foretaksregisteret: {organization.registrertIForetaksregisteret ? "Ja" : "Nei"}</Typography>
-        <Typography>Frivillighetsregisteret: {organization.registrertIFrivillighetsregisteret ? "Ja" : "Nei"}</Typography>
-        <Typography>Konkurs: {organization.konkurs ? "Ja" : "Nei"}</Typography>
-        </Box>
-    </ModalDialog>
-    </Modal>
-);
+        <Modal open={open} onClose={onClose} size="lg">
+            <ModalDialog sx={{ mb: 1, width: 'auto', maxWidth: '100%', overflow: 'wrap' }}>
+                <ModalClose />
+                <Typography level="h4" component="h2">{organization.navn}
+                </Typography>
+                
+                <Box sx={{ mt: 1 }}>
+                    <table>
+                        <tbody>
+                            {orgDetails.map((item, index) => (
+                                <tr key={index}>
+                                    <td><Typography sx={{ fontWeight: 'bold' }}>{item.label}:</Typography></td>
+                                    <td><Typography sx={{ color: item.special ? '#ff0000' : 'inherit' }}>{item.value}</Typography></td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </Box>
+            </ModalDialog>
+        </Modal>
+    );
 };
 
 OrgModal.propTypes = {
@@ -39,5 +51,6 @@ OrgModal.propTypes = {
 };
 
 export default OrgModal;
+
 ``
 
