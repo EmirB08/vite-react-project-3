@@ -31,7 +31,7 @@ const DataTable = () => {
 
     return (
         <>
-        <Table stripe="odd">
+        <Table stripe="odd" hoverRow>
             <thead>
                 <tr>
                     <th>Navn</th>
@@ -41,7 +41,11 @@ const DataTable = () => {
             </thead>
             <tbody>
                 {entries.map(entry => (
-                    <tr key={entry.organisasjonsnummer} onClick={() => handleOrgClick(entry)}>
+                    <tr key={entry.organisasjonsnummer} onClick={() => handleOrgClick(entry)}
+                    style={{
+                        backgroundColor: entry.konkurs === true ? "#ff726f" : "",
+                        cursor: 'pointer'
+                      }}>
                         <td>{entry.navn}</td>
                         <td>{entry.organisasjonsnummer}</td>
                         <td>{entry.stiftelsesdato}</td>
