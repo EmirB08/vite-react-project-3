@@ -6,6 +6,7 @@ import Box from "@mui/joy/Box";
 import PropTypes from "prop-types";
 
 const OrgModal = ({ open, onClose, organization }) => {
+    if (!organization) return null;
     return (
     <Modal open={open} onClose={onClose}>
     <ModalDialog>
