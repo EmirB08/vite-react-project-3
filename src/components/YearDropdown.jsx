@@ -12,7 +12,7 @@ const YearDropdown = () => {
     };
 
     const years = [];
-    for (let year = 2024; year >= 1994; year--) {
+    for (let year = 2024; year >= 1995; year--) {
         years.push(year);
     }
 
