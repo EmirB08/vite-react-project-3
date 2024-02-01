@@ -5,7 +5,7 @@ export const UserContext = createContext();
 
 /**
  * UserInput komponent gir context  som holder delte values for applikasjonen
- * verdier kan bli satt og hentet fra UserContext for alle komponenter under UserInput fra app.jsx
+ * verdier kan bli oppdaterert fra UserContext for alle komponenter under UserInput fra app.jsx
  * inneholder foreløpig kommuneCode og year.
  * 
  * @param {Object} props - props for komponenten
