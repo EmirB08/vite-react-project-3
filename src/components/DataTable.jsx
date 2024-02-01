@@ -12,7 +12,7 @@ const fetcher = url => fetch(url).then(res => res.json());
 const DataTable = () => {
     const [selectedOrg, setSelectedOrg] = useState(null);
     const [modalOpen, setModalOpen] = useState(false);
-    const { kommuneCode, year } = useContext(DataContext);
+    const { kommuneCode, year } = useContext(DataContext); 
     const [searchQuery, setSearchQuery] = useState("");
     const url = `https://data.brreg.no/enhetsregisteret/api/enheter?kommunenummer=${kommuneCode}&fraRegistreringsdatoEnhetsregisteret=${year}-01-01&tilRegistreringsdatoEnhetsregisteret=${year}-12-31&size=9999`;
     const { data, error } = useSWR(url, fetcher);
@@ -62,10 +62,7 @@ const DataTable = () => {
                 <tbody>
                     {filteredEntries.map(entry => (
                         <tr key={entry.organisasjonsnummer} onClick={() => handleOrgClick(entry)}
-                            style={{
-                                backgroundColor: entry.konkurs === true ? "#ff726f" : "",
-                                cursor: 'pointer'
-                            }}>
+                            style={{ backgroundColor: entry.konkurs === true ? "#ff726f" : "", cursor: 'pointer'}}>
                             <td>{entry.navn}</td>
                             <td>{entry.organisasjonsnummer}</td>
                             <td>{entry.stiftelsesdato}</td>

@@ -7,7 +7,6 @@ const YearDropdown = () => {
     const { setYear } = useContext(DataContext);
 
     const handleSelectedYear = (year) => {
-        console.log(year);
         setYear(year);
     };
 

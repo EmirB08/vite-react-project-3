@@ -14,7 +14,7 @@ const SearchButton = () => {
 
     return (
         <div>
-            <Button onClick={handleButtonClick}>Søk enhetsregisteret</Button>
+            <Button onClick={handleButtonClick}>Søk enhetsregisteret - kommune</Button>
             {showDataTable && <DataTable />}
         </div>
     );
