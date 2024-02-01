@@ -11,7 +11,7 @@ const KommunerDropdown = () => {
         fetch("https://data.ssb.no/api/klass/v1/versions/1710.json")
             .then(response => response.json())
             .then(data => {
-                const sortedKommuner = data.classificationItems.sort((a, b) => a.name.localeCompare(b.name));
+                const sortedKommuner = data.classificationItems.sort((a, b) => a.name.localeCompare(b.name)); // sorterer kommuner alfabetisk via localeCompare
                 setKommuner(sortedKommuner);
             });
     }, []);

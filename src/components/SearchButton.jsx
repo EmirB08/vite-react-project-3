@@ -4,13 +4,13 @@ import DataTable from "./DataTable";
 import Button from "@mui/joy/Button";
 import Typography from "@mui/joy/Typography";
 
-const SearchButton = () => {
-    const { kommuneCode, year } = useContext(DataContext);
-    const [showDataTable, setShowDataTable] = useState(false);
-    const searchEnabled = kommuneCode && year;
-    const [showWarning, setShowWarning] = useState(false);
+const SearchButton = () => { // funksjon for å vise tabellen og vise/skjule warning med useState via onClick
+    const { kommuneCode, year } = useContext(DataContext); // henter ut kommuneCode og year fra DataContext
+    const [showDataTable, setShowDataTable] = useState(false); // setter showDataTable til false som default
+    const searchEnabled = kommuneCode && year; // sjekker om kommuneCode og year er satt
+    const [showWarning, setShowWarning] = useState(false); // setter showWarning til false som default
 
-    const handleButtonClick = () => { // funksjon for å vise tabellen og vise/skjule warning med useState
+    const handleButtonClick = () => { // if/else statement for å vise tabellen og vise warning
         if (searchEnabled) {
         setShowDataTable(true);
         setShowWarning(false);

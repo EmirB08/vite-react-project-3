@@ -12,11 +12,11 @@ const OrgModal = ({ open, onClose, organization }) => {
     const orgDetails = [ // array med objekter for å vise detaljer om organisasjonen i modal
         { label: "Organisasjonsnummer", value: organization.organisasjonsnummer },
         { label: "Stiftelsesdato", value: organization.stiftelsesdato },
-        { label: "Adresse", value: organization.forretningsadresse?.adresse?.join(', ') },
+        { label: "Adresse", value: organization.forretningsadresse?.adresse?.join("", "") }, // joiner array til string
         { label: "Organisasjonsform", value: organization.organisasjonsform?.beskrivelse },
         { label: "Næringskode", value: organization.naeringskode1?.beskrivelse },
         { label: "Ansatte", value: organization.antallAnsatte },
-        { label: "Foretaksregisteret", value: organization.registrertIForetaksregisteret ? "Ja" : "Nei" },
+        { label: "Foretaksregisteret", value: organization.registrertIForetaksregisteret ? "Ja" : "Nei" }, // gjør om true/false til Ja/Nei
         { label: "Frivillighetsregisteret", value: organization.registrertIFrivillighetsregisteret ? "Ja" : "Nei" },
         { label: "Konkurs", value: organization.konkurs ? "Ja" : "Nei", true: organization.konkurs },
     ];

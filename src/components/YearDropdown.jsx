@@ -11,8 +11,8 @@ const YearDropdown = () => {
     };
 
     const years = []; // lager tomt array for å fylle med årstall
-    for (let year = 2024; year >= 1995; year--) {
-        years.push(year);
+    for (let year = 2024; year >= 1995; year--) { // for loop som går fra 2024 til 1995
+        years.push(year); // legger til årstall i array
     }
 
     return (
