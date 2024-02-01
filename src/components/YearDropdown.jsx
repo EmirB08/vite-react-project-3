@@ -3,7 +3,7 @@ import { DataContext } from "./DataContext";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
 
-const YearDropdown = () => {
+const YearDropdown = () => { 
     const { setYear } = useContext(DataContext);
 
     const handleSelectedYear = (year) => {
