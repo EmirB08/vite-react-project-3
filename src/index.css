@@ -33,6 +33,14 @@ html, body, #root {
     justify-content: center;
     align-items: center;
 }
+
+.search-button {
+    display: flex;
+    align-items: baseline;
+    justify-content:space-between;
+
+}
+
 @media (max-width: 600px) {
     * {
     font-size: 12px;

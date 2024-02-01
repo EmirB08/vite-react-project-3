@@ -7,26 +7,27 @@ import { useState } from "react";
 import OrgModal from "./OrgModal";
 import Input from '@mui/joy/Input';
 
-const fetcher = url => fetch(url).then(res => res.json());
+const fetcher = url => fetch(url).then(res => res.json()); // fetcher funksjon for useSWR
 
 const DataTable = () => {
+    const { kommuneCode, year } = useContext(DataContext); //tar inn state for kommuneCode og year fra DataContext
+    const [modalOpen, setModalOpen] = useState(false); 
     const [selectedOrg, setSelectedOrg] = useState(null);
-    const [modalOpen, setModalOpen] = useState(false);
-    const { kommuneCode, year } = useContext(DataContext); 
     const [searchQuery, setSearchQuery] = useState("");
+
     const url = `https://data.brreg.no/enhetsregisteret/api/enheter?kommunenummer=${kommuneCode}&fraRegistreringsdatoEnhetsregisteret=${year}-01-01&tilRegistreringsdatoEnhetsregisteret=${year}-12-31&size=9999`;
-    const { data, error } = useSWR(url, fetcher);
+    const { data, error } = useSWR(url, fetcher); // bruker useSWR hook for å hente data fra url
 
     if (error) return <div>Error loading data.</div>;
-    if (!data) return (
-        <div className="loading-animation">
+    if (!data) return ( // hvis data ikke er lastet inn enda, returner loading animation
+        <div className="loading-animation"> 
             <CircularProgress />
         </div>
     );
 
-    const entries = data._embedded.enheter;
+    const entries = data._embedded.enheter; // setter data._embedded.enheter til entries
 
-    const handleOrgClick = (organization) => {
+    const handleOrgClick = (organization) => { // funksjon for å åpne modal og sette valgt org
         setSelectedOrg(organization);
         setModalOpen(true);
     }
@@ -62,7 +63,9 @@ const DataTable = () => {
                 <tbody>
                     {filteredEntries.map(entry => (
                         <tr key={entry.organisasjonsnummer} onClick={() => handleOrgClick(entry)}
-                            style={{ backgroundColor: entry.konkurs === true ? "#ff726f" : "", cursor: 'pointer'}}>
+                            style={{ backgroundColor: entry.konkurs === true ? "#ff0000" : "", cursor: 'pointer',
+                                     fontWeight: entry.konkurs === true ? "bold" : "inherit"
+                            }}>
                             <td>{entry.navn}</td>
                             <td>{entry.organisasjonsnummer}</td>
                             <td>{entry.stiftelsesdato}</td>

@@ -38,7 +38,7 @@ const OrgModal = ({ open, onClose, organization }) => {
                                         </Typography>
                                     </td>
                                     <td>
-                                        <Typography sx={{ color: item.true ? "#ff0000" : "inherit"}}>
+                                        <Typography sx={{ color: item.true ? "#ff0000" : "inherit", fontWeight: item.true ? "bold" : "inherit"}}>
                                         {item.value}
                                         </Typography>
                                     </td>
