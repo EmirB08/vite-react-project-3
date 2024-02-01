@@ -36,7 +36,7 @@ const DataTable = () => {
         );
     });
 
-    const updateData = (e) => { // oppdaterer searchInput med det som skrives inn i inputfeltet
+    const updateData = (e) => { 
         setSearchInput(e.target.value);
     };
 
