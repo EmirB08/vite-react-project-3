@@ -59,6 +59,3 @@ OrgModal.propTypes = {
 };
 
 export default OrgModal;
-
-``
-

@@ -36,49 +36,24 @@ const DataTable = () => {
         );
     });
 
-    const updateData = (e) => { 
-        setSearchInput(e.target.value);
-    };
-
     return (
         <>
-            <Input
-                value={searchInput}
-                onChange={updateData}
-                placeholder="Søk etter navn, org.nr eller stiftelsesdato"
-            />
+            <Input value={searchInput} onChange={e => setSearchInput(e.target.value)}
+                    placeholder="Søk etter navn, org.nr eller stiftelsesdato" />
             <Table stripe="odd" hoverRow>
-                <thead>
-                    <tr>
-                        <th>Navn</th>
-                        <th>Org.nr</th>
-                        <th>Stiftelsesdato</th>
-                    </tr>
-                </thead>
+                <thead><tr><th>Navn</th><th>Org.nr</th><th>Stiftelsesdato</th></tr></thead>
                 <tbody>
                     {filterEnheter.map(enhet => (
-                    <tr key={enhet.organisasjonsnummer} onClick={() => { setSelectedOrg(enhet); setModalOpen(true);}}
-                        style={{
-                        backgroundColor: enhet.konkurs === true ? "#ff0000" : "",
-                        cursor: "pointer",
-                        fontWeight: enhet.konkurs === true ? "bold" : "inherit",
-                        }}
-                    >
-                        <td>{enhet.navn}</td>
-                        <td>{enhet.organisasjonsnummer}</td>
-                        <td>{enhet.stiftelsesdato}</td>
-                      </tr>
-                      
+                        <tr key={enhet.organisasjonsnummer} onClick={() => { setSelectedOrg(enhet); setModalOpen(true); }}
+                            style={{ backgroundColor: enhet.konkurs ? "#ff0000" : "", cursor: "pointer", fontWeight: enhet.konkurs ? "bold" : "inherit", }}>
+                            <td>{enhet.navn}</td><td>{enhet.organisasjonsnummer}</td><td>{enhet.stiftelsesdato}</td>
+                        </tr>
                     ))}
                 </tbody>
             </Table>
-            <OrgModal 
-                open={modalOpen} 
-                onClose={() => setModalOpen(false)} 
-                organization={selectedOrg} 
-            />
+            <OrgModal open={modalOpen} onClose={() => setModalOpen(false)} organization={selectedOrg} />
         </>
-);
+    );
 };
 
 export default DataTable;
