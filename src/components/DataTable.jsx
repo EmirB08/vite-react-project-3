@@ -64,7 +64,7 @@ const DataTable = () => {
                     {filteredEntries.map(entry => (
                         <tr key={entry.organisasjonsnummer} onClick={() => handleOrgClick(entry)}
                             style={{ backgroundColor: entry.konkurs === true ? "#ff0000" : "", cursor: 'pointer',
-                                     fontWeight: entry.konkurs === true ? "bold" : "inherit"
+                                    fontWeight: entry.konkurs === true ? "bold" : "inherit"
                             }}>
                             <td>{entry.navn}</td>
                             <td>{entry.organisasjonsnummer}</td>

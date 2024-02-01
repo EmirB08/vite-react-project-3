@@ -7,15 +7,15 @@ export const DataProvider = ({ children }) => {
     const [kommuneCode, setKommuneCode] = useState(null);
     const [year, setYear] = useState(null);
 
-    const value = {
+    const value = { // verdier som skal være tilgjengelig i context
         kommuneCode,
         setKommuneCode,
         year,
         setYear,
     };
 
-    return (
-        <DataContext.Provider value={value}>
+    return ( // wrapper children til å få tilgang til context
+        <DataContext.Provider value={value}> 
             {children}
         </DataContext.Provider>
     );

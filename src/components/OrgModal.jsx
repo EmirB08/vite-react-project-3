@@ -9,7 +9,7 @@ import Table from "@mui/joy/Table";
 const OrgModal = ({ open, onClose, organization }) => {
     if (!organization) return null;
 
-    const orgDetails = [
+    const orgDetails = [ // array med objekter for å vise detaljer om organisasjonen i modal
         { label: "Organisasjonsnummer", value: organization.organisasjonsnummer },
         { label: "Stiftelsesdato", value: organization.stiftelsesdato },
         { label: "Adresse", value: organization.forretningsadresse?.adresse?.join(', ') },

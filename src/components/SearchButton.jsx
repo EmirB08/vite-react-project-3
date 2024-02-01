@@ -10,7 +10,7 @@ const SearchButton = () => {
     const searchEnabled = kommuneCode && year;
     const [showWarning, setShowWarning] = useState(false);
 
-    const handleButtonClick = () => {
+    const handleButtonClick = () => { // funksjon for å vise tabellen og vise/skjule warning med useState
         if (searchEnabled) {
         setShowDataTable(true);
         setShowWarning(false);
