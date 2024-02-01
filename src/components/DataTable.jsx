@@ -13,7 +13,7 @@ const DataTable = () => {
     const { kommuneCode, year } = useContext(UserContext); //tar inn kommuneCode og year fra UserContext via useContext hook
     const [modalOpen, setModalOpen] = useState(false); // setter useState for modalOpen til false som default
     const [selectedOrg, setSelectedOrg] = useState(null); // setter useState for selectedOrg til null som default
-    const [searchInput, setSearchInput] = useState(""); // setter useState for searchQuery til tom string som default
+    const [searchInput, setSearchInput] = useState(""); // setter useState til tom string som default
 
     const url = `https://data.brreg.no/enhetsregisteret/api/enheter?kommunenummer=${kommuneCode}&fraRegistreringsdatoEnhetsregisteret=${year}-01-01&tilRegistreringsdatoEnhetsregisteret=${year}-12-31&size=9999`;
     const { data, error } = useSWR(url, fetcher); // bruker useSWR hook for å hente data fra url via fetcher funksjon
