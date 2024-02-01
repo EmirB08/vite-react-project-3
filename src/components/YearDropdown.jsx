@@ -1,24 +1,20 @@
 import { useContext } from "react";
-import { DataContext } from "./DataContext";
+import { UserContext } from "./UserContext";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
 
 const YearDropdown = () => { 
-    const { setYear } = useContext(DataContext); // henter ut setYear fra DataContext
-
-    const handleSelectedYear = (year) => { // setter year til å være det valgte onClick årstallet
-        setYear(year);
-    };
+    const { setYear } = useContext(UserContext); // tar inn setYear funksjonen fra UserContext med useContext hook
 
     const years = []; // lager tomt array for å fylle med årstall
-    for (let year = 2024; year >= 1995; year--) { // for loop som går fra 2024 til 1995
-        years.push(year); // legger til årstall i array
+    for (let year = 2024; year >= 1995; year--) { // for loop som genererer årstall fra 2024 til 1995
+        years.push(year); // legger til hvert årstall i det tomme arrayet
     }
 
     return (
         <Select placeholder="Velg år">
             {years.map((year) => (
-                <Option key={year} value={year} onClick={() => handleSelectedYear(year.toString())}> 
+                <Option key={year} value={year} onClick={() => setYear(year.toString())}> 
                 {year}
                 </Option>
             ))}

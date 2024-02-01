@@ -1,4 +1,4 @@
-import { DataProvider } from "./components/DataContext";
+import { UserInput } from "./components/UserContext";
 import MainContainer from "./components/MainContainer";
 import KommunerDropdown from "./components/KommunerDropdown";
 import YearDropdown from "./components/YearDropdown";
@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 
 const App = () => {
     return (
-        <DataProvider>
+        <UserInput>
             <MainContainer>
                 <NavBar />
                 <KommunerDropdown />
@@ -16,7 +16,7 @@ const App = () => {
                 <SearchButton />
             </MainContainer>
             <Footer />
-        </DataProvider>
+        </UserInput>
     );
 };
 
