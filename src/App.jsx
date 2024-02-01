@@ -14,8 +14,8 @@ const App = () => {
                 <KommunerDropdown />
                 <YearDropdown />
                 <SearchButton />
-                <Footer />
             </MainContainer>
+            <Footer />
         </DataProvider>
     );
 };

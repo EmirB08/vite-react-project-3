@@ -1,4 +1,5 @@
 import { AppBar, Toolbar, Typography, IconButton } from '@mui/material';
+import { Container } from '@mui/system';
 import ReactIcon from '../media/react-icon.svg';
 import ViteIcon from '../media/vite-icon.svg';
 import GitHubIcon from '../media/github-icon.svg';
@@ -6,6 +7,7 @@ import GitHubIcon from '../media/github-icon.svg';
 
 
 const Footer = () => (
+    <Container maxWidth="md">
     <AppBar position="static" color="primary">
       <Toolbar>
         <Typography variant="h6" color="inherit" component="div" sx={{ flexGrow: 1 }}>
@@ -22,6 +24,7 @@ const Footer = () => (
         </IconButton>
       </Toolbar>
     </AppBar>
+    </Container>
   );
   
   export default Footer;

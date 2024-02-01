@@ -4,8 +4,8 @@ import PropTypes from "prop-types";
 export const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-    const [kommuneCode, setKommuneCode] = useState('');
-    const [year, setYear] = useState('');
+    const [kommuneCode, setKommuneCode] = useState(null);
+    const [year, setYear] = useState(null);
 
     const value = {
         kommuneCode,
