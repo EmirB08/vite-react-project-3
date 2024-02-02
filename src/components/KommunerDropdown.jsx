@@ -17,7 +17,7 @@ const KommunerDropdown = () => {
     }, []);
 
     return (
-        <Select placeholder="Velg en kommune">
+        <Select sx={{ mt: 0.5}}placeholder="Velg en kommune">
             {kommuner.map(({ code, name }) => (
                 <Option key={code} value={code} onClick={() => setKommuneCode(code)}>
                     {name}

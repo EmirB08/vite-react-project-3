@@ -38,8 +38,8 @@ const DataTable = () => {
 
     return (
         <>
-            <Input value={searchInput} onChange={e => setSearchInput(e.target.value)}
-                    placeholder="Søk etter navn, org.nr eller stiftelsesdato" />
+            <Input sx={{ mt: 1, mb: 1}} value={searchInput} onChange={e => setSearchInput(e.target.value)}
+                    placeholder="Søk etter navn, org.nr eller stiftelsesdato" />     
             <Table stripe="odd" hoverRow>
                 <thead><tr><th>Navn</th><th>Org.nr</th><th>Stiftelsesdato</th></tr></thead>
                 <tbody>
@@ -50,7 +50,7 @@ const DataTable = () => {
                         </tr>
                     ))}
                 </tbody>
-            </Table>
+            </Table> 
             <OrgModal open={modalOpen} onClose={() => setModalOpen(false)} organization={selectedOrg} />
         </>
     );

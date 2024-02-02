@@ -22,7 +22,7 @@ const SearchButton = () => {
     return (
     <div>
         <div className="search-button">
-            <Button onClick={handleButtonClick}>Søk enhetsregisteret - kommune</Button>
+            <Button sx={{ mt: 1}} onClick={handleButtonClick}>Søk enhetsregisteret - kommune</Button>
             {showWarning && (
                 <Typography sx={{ color: "#ff0000", fontWeight: "bold", fontSize: "12px"}}>
                     Vennligst velg både kommune og år!

@@ -12,7 +12,7 @@ const YearDropdown = () => {
     }
 
     return (
-        <Select placeholder="Velg år">
+        <Select sx={{ mt: 0.5}} placeholder="Velg år">
             {years.map((year) => (
                 <Option key={year} value={year} onClick={() => setYear(year.toString())}> 
                 {year}
