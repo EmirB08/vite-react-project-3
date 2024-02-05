@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { UserContext } from "./UserContext";
 import useSWR from "swr";
 import Table from "@mui/joy/Table";
@@ -18,6 +18,11 @@ const DataTable = () => {
     const [selectedOrg, setSelectedOrg] = useState(null); // setter useState for selectedOrg til null som default
     const [searchInput, setSearchInput] = useState(""); // setter useState til tom string som default
     const [page, setPage] = useState(1);
+
+useEffect(() => {
+setPage(1);
+}, [kommuneCode, year]);
+
 
     const url = `https://data.brreg.no/enhetsregisteret/api/enheter?kommunenummer=${kommuneCode}&fraRegistreringsdatoEnhetsregisteret=${year}-01-01&tilRegistreringsdatoEnhetsregisteret=${year}-12-31&size=9999`;
     const { data, error } = useSWR(url, fetcher); // bruker useSWR hook for å hente data fra url via fetcher funksjon
@@ -51,15 +56,32 @@ const DataTable = () => {
 
     return (
         <>
-            <Input sx={{ mt: 1, mb: 1}} value={searchInput} onChange={e => setSearchInput(e.target.value)}
-                    placeholder="Søk etter navn, org.nr eller stiftelsesdato" />     
+            <Input
+                sx={{ mt: 1, mb: 1 }}
+                value={searchInput}
+                onChange={(e) => {
+                setSearchInput(e.target.value);
+                setPage(1);
+                }}
+                placeholder="Søk etter navn, org.nr eller stiftelsesdato"
+            />   
             <Table stripe="odd" hoverRow>
-                <thead><tr><th>Navn</th><th>Org.nr</th><th>Stiftelsesdato</th></tr></thead>
+                <thead>
+                    <tr>
+                        <th>Navn</th>
+                        <th>Org.nr</th>
+                        <th>Stiftelsesdato</th>
+                    </tr>
+                </thead>
                 <tbody>
                     {displayData.map(enhet => (
-                        <tr key={enhet.organisasjonsnummer} onClick={() => { setSelectedOrg(enhet); setModalOpen(true); }}
-                            style={{ backgroundColor: enhet.konkurs ? "#ff0000" : "", cursor: "pointer", fontWeight: enhet.konkurs ? "bold" : "inherit", }}>
-                            <td>{enhet.navn}</td><td>{enhet.organisasjonsnummer}</td><td>{enhet.stiftelsesdato}</td>
+                        <tr 
+                        key={enhet.organisasjonsnummer} 
+                        onClick={() => { setSelectedOrg(enhet); setModalOpen(true); }}
+                        style={{ backgroundColor: enhet.konkurs ? "#ff0000" : "", cursor: "pointer", fontWeight: enhet.konkurs ? "bold" : "inherit", }}>
+                        <td>{enhet.navn}</td>
+                        <td>{enhet.organisasjonsnummer}</td>
+                        <td>{enhet.stiftelsesdato}</td>
                         </tr>
                     ))}
                 </tbody>
