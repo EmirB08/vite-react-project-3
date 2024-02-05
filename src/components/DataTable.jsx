@@ -37,7 +37,8 @@ setPage(1);
     const pageCount = Math.ceil(filterEnheter.length / rowsPerPage);
     const changePage = (event, newPage) => {
         setPage(newPage);
-        window.scrollTo(0, 0);
+        window.scrollTo({top: 0, left: 0, behavior: "smooth" });
+        
     };
 
     const displayData = filterEnheter.slice((page - 1) * rowsPerPage, page * rowsPerPage);
