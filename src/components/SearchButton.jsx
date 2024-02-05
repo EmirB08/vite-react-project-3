@@ -28,8 +28,8 @@ const SearchButton = () => {
                     Vennligst velg både kommune og år!
                 </Typography>
             )}
-            </div>
-            {showDataTable && <DataTable />}
+        </div>
+        {showDataTable && <DataTable />}
         
     </div>
     );

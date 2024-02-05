@@ -1,16 +1,12 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { UserContext } from "./UserContext";
-import useSWR from "swr";
+import { useFetchData } from "../hooks/useFetchData";
+import CircularProgress from "@mui/material/CircularProgress"; 
 import Table from "@mui/joy/Table";
-import CircularProgress from "@mui/material/CircularProgress";
-import { useState } from "react";
 import OrgModal from "./OrgModal";
 import Input from "@mui/joy/Input";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/joy/Stack";
-
-
-const fetcher = url => fetch(url).then(res => res.json()); // fetcher funksjon for useSWR
 
 const DataTable = () => {
     const { kommuneCode, year } = useContext(UserContext); //tar inn kommuneCode og year fra UserContext via useContext hook
@@ -23,18 +19,10 @@ useEffect(() => {
 setPage(1);
 }, [kommuneCode, year]);
 
-
-    const url = `https://data.brreg.no/enhetsregisteret/api/enheter?kommunenummer=${kommuneCode}&fraRegistreringsdatoEnhetsregisteret=${year}-01-01&tilRegistreringsdatoEnhetsregisteret=${year}-12-31&size=9999`;
-    const { data, error } = useSWR(url, fetcher); // bruker useSWR hook for å hente data fra url via fetcher funksjon
-
-    if (error) return <div>Error loading data.</div>; // hvis det er en error, returner error melding
-    if (!data) return ( // hvis data ikke er lastet inn, returner loading animation
-        <div className="loading-animation"> 
-            <CircularProgress />
-        </div>
-    );
-
-    const enheter = data._embedded.enheter; // setter data._embedded.enheter til enheter
+    const { data: enheter, isLoading, isError } = useFetchData(); // bruker useFetchData hook for å hente data fra BRREG API
+    
+    if (isError) return <div>Error loading data.</div>;
+    if (isLoading) return <div className="loading-animation"><CircularProgress /></div>;
 
     const filterEnheter = enheter.filter(enhet => { // filterer enheter basert på søkeord
         const search = searchInput.toLowerCase();
@@ -45,7 +33,7 @@ setPage(1);
         );
     });
     
-    const rowsPerPage = 40; // pagination
+    const rowsPerPage = 40; // antall rader per side
     const pageCount = Math.ceil(filterEnheter.length / rowsPerPage);
     const changePage = (event, newPage) => {
         setPage(newPage);
@@ -65,26 +53,26 @@ setPage(1);
                 }}
                 placeholder="Søk etter navn, org.nr eller stiftelsesdato"
             />   
-            <Table stripe="odd" hoverRow>
-                <thead>
-                    <tr>
-                        <th>Navn</th>
-                        <th>Org.nr</th>
-                        <th>Stiftelsesdato</th>
-                    </tr>
-                </thead>
-                <tbody>
+                <Table stripe="odd" hoverRow>
+                    <thead>
+                        <tr>
+                            <th>Navn</th>
+                            <th>Org.nr</th>
+                            <th>Stiftelsesdato</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     {displayData.map(enhet => (
                         <tr 
                         key={enhet.organisasjonsnummer} 
                         onClick={() => { setSelectedOrg(enhet); setModalOpen(true); }}
                         style={{ backgroundColor: enhet.konkurs ? "#ff0000" : "", cursor: "pointer", fontWeight: enhet.konkurs ? "bold" : "inherit", }}>
-                        <td>{enhet.navn}</td>
-                        <td>{enhet.organisasjonsnummer}</td>
-                        <td>{enhet.stiftelsesdato}</td>
+                            <td>{enhet.navn}</td>
+                            <td>{enhet.organisasjonsnummer}</td>
+                            <td>{enhet.stiftelsesdato}</td>
                         </tr>
                     ))}
-                </tbody>
+                    </tbody>
             </Table>
             <Stack direction="row" justifyContent="center" alignItems="center" spacing={2} sx={{ mt: 1 }}>
                 <Pagination count={pageCount} page={page} onChange={changePage} />

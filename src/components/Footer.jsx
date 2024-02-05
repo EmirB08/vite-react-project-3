@@ -10,15 +10,15 @@ const Footer = () => (
                 <Typography variant="h6" color="primary" component="div" 
                 sx={{ flexGrow: 1, fontSize: '0.9rem', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 Created with 
-                <IconButton color="primary" href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">
-                <img src={ViteIcon} alt="Vite" style={{ height: 24 }} />
-                </IconButton> + 
-                <IconButton color="primary" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-                <img src={ReactIcon} alt="React" style={{ height: 24 }} />
-                </IconButton> by EmirB08
-                <IconButton color="primary" href="https://github.com/EmirB08" target="_blank" rel="noopener noreferrer">
-                <img src={GitHubIcon} alt="GitHub" style={{ height: 24 }} />
-                </IconButton>
+                    <IconButton color="primary" href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">
+                        <img src={ViteIcon} alt="Vite" style={{ height: 24 }} />
+                    </IconButton> + 
+                    <IconButton color="primary" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
+                        <img src={ReactIcon} alt="React" style={{ height: 24 }} />
+                    </IconButton> by EmirB08
+                    <IconButton color="primary" href="https://github.com/EmirB08" target="_blank" rel="noopener noreferrer">
+                        <img src={GitHubIcon} alt="GitHub" style={{ height: 24 }} />
+                    </IconButton>
                 </Typography>
             </Toolbar>
         </AppBar>
