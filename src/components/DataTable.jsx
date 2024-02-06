@@ -33,7 +33,7 @@ setPage(1);
         );
     });
     
-    const rowsPerPage = 40; // antall rader per side
+    const rowsPerPage = 100; // antall rader per side
     const pageCount = Math.ceil(filterEnheter.length / rowsPerPage);
     const changePage = (event, newPage) => {
         setPage(newPage);
@@ -67,7 +67,7 @@ setPage(1);
                         <tr 
                         key={enhet.organisasjonsnummer} 
                         onClick={() => { setSelectedOrg(enhet); setModalOpen(true); }}
-                        style={{ backgroundColor: enhet.konkurs ? "#ff0000" : "", cursor: "pointer", fontWeight: enhet.konkurs ? "bold" : "inherit", }}>
+                        style={{ backgroundColor: enhet.konkurs ? "#ff0000" : "", cursor: "pointer", fontWeight:"bold" }}>
                             <td>{enhet.navn}</td>
                             <td>{enhet.organisasjonsnummer}</td>
                             <td>{enhet.stiftelsesdato}</td>
