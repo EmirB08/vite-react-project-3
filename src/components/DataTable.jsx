@@ -42,7 +42,7 @@ const DataTable = ({ activeKommuneCode, activeYear }) => {
         );
     });
 
-    const rowsPerPage = 100;
+    const rowsPerPage = 50;
     const pageCount = Math.ceil(filterEnheter.length / rowsPerPage);
     const changePage = (event, newPage) => {
         setPage(newPage);

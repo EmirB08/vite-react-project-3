@@ -4,7 +4,6 @@ import KommunerDropdown from "./components/KommunerDropdown";
 import YearDropdown from "./components/YearDropdown";
 import SearchButton from "./components/SearchButton";
 import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
 
 const App = () => {
     return (
@@ -15,10 +14,8 @@ const App = () => {
                 <YearDropdown />
                 <SearchButton />
             </MainContainer>
-            <Footer />
         </UserInput>
     );
 };
 
 export default App;
-
