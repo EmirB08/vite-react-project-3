@@ -3,29 +3,29 @@ import { UserContext } from "./UserContext";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
 
-const YearDropdown = () => { 
-    const { setYear } = useContext(UserContext); // tar inn setYear funksjonen fra UserContext med useContext hook
+const YearDropdown = () => {
+  const { year, setYear } = useContext(UserContext); // tar inn year og setYear funksjonen fra UserContext
 
-    const years = []; // lager tomt array for å fylle med årstall
-    for (let year = 2024; year >= 1995; year--) { // for loop som genererer årstall fra 2024 til 1995
-        years.push(year); // legger til hvert årstall i det tomme arrayet
-    }
+  const years = []; // lager tomt array for å fylle med årstall
+  for (let y = 2024; y >= 1995; y--) {
+    // for loop som genererer årstall fra 2024 til 1995
+    years.push(y); // legger til hvert årstall i det tomme arrayet
+  }
 
-    return (
-        <Select sx={{ mt: 0.5}} placeholder="Velg år">
-            {years.map((year) => (
-                <Option key={year} value={year} onClick={() => setYear(year.toString())}> 
-                {year}
-                </Option>
-            ))}
-        </Select>
-    );
+  return (
+    <Select
+      sx={{ mt: 0.5 }}
+      placeholder="Velg år"
+      value={year || ""}
+      onChange={(_, newValue) => setYear(newValue)}
+    >
+      {years.map((y) => (
+        <Option key={y} value={y.toString()}>
+          {y}
+        </Option>
+      ))}
+    </Select>
+  );
 };
 
 export default YearDropdown;
-
-
-
-
-
-
